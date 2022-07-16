@@ -1,6 +1,4 @@
 import express from "express";
-import { config } from "../config";
-import mongoose from "mongoose";
 
 // loaders
 import expressLoader from "./express";
@@ -15,7 +13,7 @@ class App {
 
     private async loader() {
         // Load everything related to express
-        await expressLoader(this.app);
+        expressLoader(this.app);
         // Connect to mongoose
         await mongooseLoader();
     }

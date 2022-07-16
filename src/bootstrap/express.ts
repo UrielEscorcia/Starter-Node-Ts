@@ -13,7 +13,7 @@ const configRouter = () => {
     return router;
 };
 
-export default async (app: express.Application) => {
+export default (app: express.Application) => {
     // Body parser only needed during POST on the graphQL path
     app.use(bodyParser.json({ limit: "50mb" }));
     app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));

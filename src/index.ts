@@ -3,7 +3,7 @@ import * as mongoose from "mongoose";
 import App from "./bootstrap";
 import { config } from "./config";
 
-const port = process.env.PORT || 8080;
+const port = config.port || 8080;
 
 const server = App.listen(port, () =>
     console.log(`🚀 Server ready at http://localhost:${config.port}`)

@@ -1,22 +1,21 @@
-# Graphql Starter
+# Node Express App Starter
 
 
 #### Technologies 
 
 - NodeJS and TypeScript
-- GraphQL with Apollo Server and Type GraphQL
 - MongoDB Database integrated with Mongoose/TypeGoose
 - Docker (Not mandatory)
+- Jest Testing
 
-<!-- ## Folder structure
+ ## Folder structure
 
 #### Overview
 
 ```
 .
 ├── src                        # Where your source code lives
-│   ├── bootstrap              # Bootstrapping and loading of the API dependencies (Express, Apollo, Database, ...)
-│   ├── entities               # Used to generate typing, schemas and ORM models
+│   ├── bootstrap              # Bootstrapping and loading of the API dependencies (Express, Database, ...)
 │   ├── modules                # Business logic of the app divided by domain (eg: User, Post, Todo)
 │   ├── tests                  # Where all our testing strategy lives
 │   ├── utils                  # Collection of utils function that we use in the project
@@ -31,7 +30,7 @@
 ├── package.json               # Node module dependencies
 ├── README.md                  # Simple readme file
 └── tsconfig.json              # TypeScript compiler options
-``` -->
+``` 
 
 #### Module example (Domain)
 
@@ -39,11 +38,12 @@
 .
 ├── src
 │   └── modules
-│       └── user               # Module name
-│           ├── input.ts       # Input validation for mutations and queries using class-validator
-│           ├── model.ts       # Database model
-│           ├── resolver.ts    # GraphQL revolver
-│           └── service.ts     # Business logic of your app
+│       └── todo               # Module name
+│           ├── dto            # DTOs folder 
+│           ├── controllers    # Router controllers folder
+│           ├── entities       # Schemas and ORM models of module
+│           ├── models         # Entities respositories folder
+│           └── services       # Business logic of your module
 ```
 
 ## How to use
@@ -69,8 +69,5 @@
 
 - Run 'npm test'
 
-> Integration tests are done with Jest, Apollo Server Testing and MongoDB Memory Server. This way every test are testing our entire logic with every graphQL request, from our resolvers to our models!
+> Integration tests are done with Jest, Supertest and MongoDB Memory Server. This way every test are testing our entire logic request, from our controllers to our models!
 
-#### Access to the GraphQL Playground (Dev only)
-
-- `http://localhost:5000/graphql`

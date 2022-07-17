@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "build": "tsc",
-        "test": "NODE_ENV=test jest -- -u",
+        "test": "NODE_ENV=test jest",
         "test:watch": "NODE_ENV=test jest --watch",
         "start:dev": "tsc && concurrently \"tsc -w\" \"nodemon dist/index.js\"",
         "start": "node dist/index.js"

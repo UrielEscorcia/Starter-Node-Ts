@@ -20,11 +20,22 @@ const onShutdown = async () => {
     console.log("cleanup finished, server is shutting down");
 };
 
+const beforeShutdown = () => {
+    // given your readiness probes run every 5 second
+    // may be worth using a bigger number so you won't
+    // run into any race conditions
+    return new Promise((resolve) => {
+        setTimeout(resolve, 10000);
+    });
+};
+
 export const initializeHealthCheck = (server: Server) => {
     createTerminus(server, {
         healthChecks: { "/health": onHealthCheck },
         signals: ["SIGTERM", "SIGINT"],
         onSignal,
         onShutdown,
+        useExit0: true,
+        beforeShutdown,
     });
 };

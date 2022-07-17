@@ -1,11 +1,16 @@
+import { HealthCheckError } from "@godaddy/terminus";
 import mongoose from "mongoose";
 
 import { config } from "../config";
 
-process.on("SIGINT", async () => {
-    await mongoose.connection.close();
-    process.exit(0);
-});
-
 // Your Mongoose setup goes here
-export default async () => mongoose.connect(config.mongoDB.uri);
+export const checkConnection = async () => {
+    if (mongoose.connection.readyState == 1) {
+        return {
+            dbStatus: "ok",
+        };
+    }
+    throw new HealthCheckError("DB Disconnected", "DB is disconnected");
+};
+export const closeDatabase = () => mongoose.connection.close();
+export const mongooseLoader = async () => mongoose.connect(config.mongoDB.uri);

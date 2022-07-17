@@ -2,7 +2,7 @@ import express from "express";
 
 // loaders
 import expressLoader from "./express";
-import mongooseLoader from "./mongo";
+import { mongooseLoader } from "./mongo";
 
 class App {
     app: express.Application;
